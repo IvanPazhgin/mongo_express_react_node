@@ -1,0 +1,35 @@
+{
+  "name": "mongo_express_react_node",
+  "version": "1.0.0",
+  "description": "backend node JS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "server": "nodemon src/app.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "nodeJS",
+    "express",
+    "MySQL",
+    "MongoDB",
+    "JWT",
+    "ORM"
+  ],
+  "author": "Ivan Pazhgin <ivan.pazhgin@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.9",
+    "express": "^4.18.2",
+    "express-validator": "^6.15.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.0.1",
+    "mongoose": "^6.9.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20"
+  }
+}
