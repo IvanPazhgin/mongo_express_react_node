@@ -3,6 +3,7 @@ import {useRoutes} from "./routes";
 import { BrowserRouter as Router } from 'react-router-dom'
 import {useAuth} from "./hooks/auth.hook";
 import {AuthContext} from "./context/AuthContext";
+import {Navbar} from "./components/navbar";
 
 function App() {
   const { login, logout, token, userId } = useAuth()
@@ -11,6 +12,7 @@ function App() {
   return (
     <AuthContext.Provider value={{ login, logout, token, userId, isAuthenticated }}>
       <Router>
+        { isAuthenticated && <Navbar />}
         <div className="container">
           {routes}
         </div>
