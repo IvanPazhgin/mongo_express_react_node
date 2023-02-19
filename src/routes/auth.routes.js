@@ -24,18 +24,17 @@ router.post(
       })
     }
 
-    const {name, email, password} = req.body
+    const {userName, email, password} = req.body
 
     const candidate = await User.findOne({email: email})
     if (candidate) return res.status(400).json({ message: 'Такой пользователь уже существует' })
 
     const hashedPassword = await bcrypt.hash(password, 12)
-    const user = new User({name, email, password: hashedPassword})
+    const user = new User({userName, email, password: hashedPassword})
 
     await user.save()
 
-    res.status(201).json({ message: `Пользователь ${name} создан` })
-
+    res.status(201).json({ message: `Пользователь ${userName} создан` })
 
   } catch (e) {
     res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
