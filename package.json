@@ -14,6 +14,7 @@
     "express",
     "MySQL",
     "MongoDB",
+    "React",
     "JWT",
     "ORM"
   ],
