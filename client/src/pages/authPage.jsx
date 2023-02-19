@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {useHttp} from "../hooks/http.hook";
 import {useMessage} from "../hooks/message.hook";
+import {AuthContext} from "../context/AuthContext";
 
 export const AuthPage = () => {
+  const auth = useContext(AuthContext)
   const message = useMessage()
   const {loading, error, request, clearError} = useHttp()
 
@@ -30,7 +32,8 @@ export const AuthPage = () => {
     try {
       const data = await request('api/auth/login', 'POST', {...form})
       // console.log('data', data)
-      message(data.message)
+      // message(data.message)
+      auth.login(data.token, data.userId)
     } catch (e) {}
   }
 
@@ -83,7 +86,7 @@ export const AuthPage = () => {
           <div className="card-action">
             <button
               className='btn yellow darken-4'
-              style={{marginRight: 10}}
+              style={{ marginRight: 10 }}
               onClick={loginHandler}
               disabled={loading}
             >
