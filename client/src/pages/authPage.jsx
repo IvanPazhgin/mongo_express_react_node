@@ -35,7 +35,6 @@ export const AuthPage = () => {
   const loginHandler = async () => {
     try {
       const data = await request('api/auth/login', 'POST', {...form})
-      // console.log('data', data)
       // message(data.message)
       auth.login(data.token, data.userId)
     } catch (e) {}
@@ -56,6 +55,7 @@ export const AuthPage = () => {
                   type="text"
                   name='userName'
                   className='yellow-input'
+                  value={form.userName}
                   onChange={changeHandler}
                 />
                 <label htmlFor="userName">Ваше имя</label>
@@ -68,6 +68,7 @@ export const AuthPage = () => {
                   type="text"
                   name='email'
                   className='yellow-input'
+                  value={form.email}
                   onChange={changeHandler}
                 />
                   <label htmlFor="email">Email</label>
@@ -80,6 +81,7 @@ export const AuthPage = () => {
                   type="password"
                   name='password'
                   className='yellow-input'
+                  value={form.password}
                   onChange={changeHandler}
                 />
                 <label htmlFor="password">Пароль</label>
