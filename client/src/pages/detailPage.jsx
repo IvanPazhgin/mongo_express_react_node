@@ -1,9 +1,33 @@
-import React from "react";
+import React, {useCallback, useContext, useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import {useHttp} from "../hooks/http.hook";
+import {AuthContext} from "../context/AuthContext";
+import {Loader} from "../components/loader";
+import {UserCard} from "../components/userCard";
 
 export const DetailPage = () => {
+  const {token} = useContext(AuthContext)
+  const {request, loading} = useHttp()
+  const [user, setUser] = useState(null)
+  const userId = useParams().id
+
+  const getUser = useCallback(async () => {
+    try {
+      const fetched = await request(`/profile/${userId}`, 'GET', null, {
+        Authorization: `Bearer ${token}`
+      })
+      setUser(fetched)
+    } catch (e) {}
+  }, [token, userId, request])
+
+  // определяем готов ли компонент
+  useEffect(() => { getUser() }, [getUser])
+
+  if (loading) return  <Loader />
+
   return (
-    <div>
-      <h1>detail page</h1>
-    </div>
+    <>
+      { !loading && user && <UserCard user = {user}/>}
+    </>
   )
 }
