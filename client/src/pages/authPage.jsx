@@ -43,10 +43,10 @@ export const AuthPage = () => {
   return (
     <div className='row'>
       <div className="col s6 offset-s3">
-        <h2>авторизация в системе</h2>
+        <h3>авторизация в системе</h3>
         <div className="card blue darken-1">
           <div className="card-content white-text">
-            <span className="card-title">Авторизация</span>
+            <span className="card-title">Авторизация | Регистрация</span>
             <div>
               <div className="input-field">
                 <input
@@ -58,7 +58,7 @@ export const AuthPage = () => {
                   value={form.userName}
                   onChange={changeHandler}
                 />
-                <label htmlFor="userName">Ваше имя</label>
+                <label htmlFor="userName">Ваше имя (только при регистрации)</label>
               </div>
 
               <div className="input-field">

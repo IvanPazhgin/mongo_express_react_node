@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import {useHttp} from "../hooks/http.hook";
 import {AuthContext} from "../context/AuthContext";
 import {Loader} from "../components/loader";
+// import {LinkCard} from "../components/linkCard";
 import {UserCard} from "../components/userCard";
 
 export const DetailPage = () => {
@@ -13,7 +14,8 @@ export const DetailPage = () => {
 
   const getUser = useCallback(async () => {
     try {
-      const fetched = await request(`/profile/${userId}`, 'GET', null, {
+      // const fetched = await request(`/profile/${userId}`, 'GET', null, {
+      const fetched = await request(`/users/${userId}`, 'GET', null, {
         Authorization: `Bearer ${token}`
       })
       setUser(fetched)

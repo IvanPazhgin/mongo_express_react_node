@@ -4,14 +4,16 @@ import {LinksPage} from "./pages/linksPage";
 import {CreatePage} from "./pages/createPage";
 import {DetailPage} from "./pages/detailPage";
 import {AuthPage} from "./pages/authPage";
+import {MainPage} from "./pages/mainPage";
+import {UsersPage} from "./pages/usersPage";
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
     return(
       <Routes>
-        {/*<Route path="/" element={<AuthPage />} />*/}
-        <Route path='/' element={<CreatePage />} />
+        <Route path='/' element={<MainPage />} />
         <Route path='/links' element={<LinksPage />} />
+        <Route path='/users' element={<UsersPage />} />
         <Route path='/create' element={<CreatePage />} />
         <Route path='/detail/:id' element={<DetailPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

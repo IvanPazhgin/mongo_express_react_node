@@ -11,6 +11,7 @@ app.use(express.json({ extended: true }))
 app.use('/api/auth', require('./routes/auth.routes'))
 // app.use('/user', require('./routes/auth.routes'))
 app.use('/profile', require('./routes/profile.routes'))
+app.use('/users', require('./routes/user.routes'))
 
 // отдаем frontend
 if (process.env.NODE_ENV === 'production') {
